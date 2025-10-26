@@ -663,19 +663,26 @@
             /* Trading Phones Section */
             section[style*="padding: 100px"] {
                 padding: 100px 20px !important;
-                overflow: hidden !important;
             }
 
             section[style*="padding: 100px"] h2 {
                 font-size: 2rem !important;
             }
 
+            section[style*="padding: 100px"] > div {
+                overflow: visible !important;
+            }
+
             section[style*="padding: 100px"] img {
-                width: 150% !important;
-                max-width: 150% !important;
+                width: 120% !important;
+                max-width: 120% !important;
                 height: auto !important;
                 max-height: none !important;
-                margin: 40px 0 !important;
+                margin: 40px auto !important;
+                display: block !important;
+                position: relative !important;
+                left: 50% !important;
+                transform: translateX(-50%) !important;
             }
 
             /* Features Section */
@@ -857,16 +864,23 @@
             /* Trading Phones Section su schermi piccoli */
             section[style*="padding: 100px"] {
                 padding: 120px 20px !important;
-                overflow: hidden !important;
+            }
+
+            section[style*="padding: 100px"] > div {
+                overflow: visible !important;
             }
 
             /* Ingrandire immagine del telefono su schermi piccoli */
             section[style*="padding: 100px"] img {
-                width: 180% !important;
-                max-width: 180% !important;
+                width: 130% !important;
+                max-width: 130% !important;
                 height: auto !important;
                 max-height: none !important;
-                margin: 60px 0 !important;
+                margin: 60px auto !important;
+                display: block !important;
+                position: relative !important;
+                left: 50% !important;
+                transform: translateX(-50%) !important;
             }
 
             .stats-grid {
