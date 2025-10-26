@@ -541,14 +541,14 @@
             }
 
             .hero-content > div:first-child img {
-                height: 80px !important;
+                height: 140px !important;
                 justify-self: start !important;
             }
 
             .hero-content > div:first-child > div:nth-child(2) {
                 flex-direction: row !important;
                 gap: 8px !important;
-                justify-content: flex-start !important;
+                justify-content: center !important;
                 flex-wrap: wrap !important;
             }
 
@@ -556,6 +556,11 @@
                 font-size: 0.75rem !important;
                 padding: 6px 10px !important;
                 white-space: nowrap !important;
+            }
+
+            /* Nascondere "Inizia Ora" su mobile */
+            .hero-content > div:first-child > div:nth-child(2) a[href="#cta"] {
+                display: none !important;
             }
 
             /* Hero Text */
