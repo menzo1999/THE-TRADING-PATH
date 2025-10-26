@@ -563,6 +563,17 @@
                 display: none !important;
             }
 
+            /* Login/Registrati su mobile */
+            .hero-content > div:first-child > div:nth-child(3) {
+                justify-self: end !important;
+                margin-top: 10px !important;
+            }
+
+            .hero-content > div:first-child > div:nth-child(3) a {
+                padding: 10px 20px !important;
+                font-size: 0.9rem !important;
+            }
+
             /* Hero Text */
             .hero {
                 padding: 40px 20px;
@@ -746,6 +757,13 @@
                 justify-content: center;
             }
 
+
+        /* Login Button Hover Effect */
+        .hero-content > div:first-child > div:nth-child(3) a:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(139, 92, 246, 0.6);
+        }
+
             /* Floating Telegram Button */
             .telegram-float {
                 bottom: 20px;
@@ -923,8 +941,12 @@
                     </a>
                 </div>
                 
-                <!-- Spazio vuoto a destra per bilanciare -->
-                <div></div>
+                <!-- Login/Registrati a destra -->
+                <div style="justify-self: end;">
+                    <a href="#" style="display: inline-block; padding: 12px 30px; background: linear-gradient(135deg, #8b5cf6, #6366f1); border-radius: 25px; color: white; text-decoration: none; font-weight: 600; font-size: 1rem; transition: all 0.3s; box-shadow: 0 4px 20px rgba(139, 92, 246, 0.4);">
+                        Login / Registrati
+                    </a>
+                </div>
             </div>
             <div class="hero-text">
                 <h1>Fai Trading in Modo Intelligente con l'Automazione AI</h1>
