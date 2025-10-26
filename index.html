@@ -533,19 +533,247 @@
         }
 
         @media (max-width: 768px) {
-            .nav-links {
-                display: none;
+            /* Hero Section - Logo e Navigation */
+            .hero-content > div:first-child {
+                grid-template-columns: 1fr !important;
+                gap: 20px !important;
+                margin-bottom: 40px !important;
+            }
+
+            .hero-content > div:first-child img {
+                height: 120px !important;
+                justify-self: center !important;
+            }
+
+            .hero-content > div:first-child > div:nth-child(2) {
+                flex-direction: column !important;
+                gap: 15px !important;
+            }
+
+            .hero-content > div:first-child > div:nth-child(2) a {
+                font-size: 0.9rem !important;
+                padding: 8px 15px !important;
+            }
+
+            /* Hero Text */
+            .hero {
+                padding: 40px 20px;
             }
 
             .hero-text h1 {
-                font-size: 2.5rem;
+                font-size: 2rem;
+            }
+
+            .hero-text p {
+                font-size: 1rem;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+                width: 100%;
+            }
+
+            .btn-primary,
+            .btn-secondary {
+                width: 100%;
+                padding: 16px 30px;
+                font-size: 1rem;
+            }
+
+            /* Hero Visual */
+            .hero-visual {
+                height: 400px;
+                margin-top: 40px;
+            }
+
+            .chart-container {
+                height: 350px;
+                padding: 20px;
+            }
+
+            .floating-stats {
+                padding: 15px;
+            }
+
+            .stat-number {
+                font-size: 1.5rem;
+            }
+
+            .stat-label {
+                font-size: 0.8rem;
+            }
+
+            /* Trading Phones Section */
+            section[style*="padding: 100px"] {
+                padding: 60px 20px !important;
+            }
+
+            section[style*="padding: 100px"] h2 {
+                font-size: 2rem !important;
+            }
+
+            section[style*="padding: 100px"] img {
+                max-width: 100% !important;
+            }
+
+            /* Features Section */
+            .features {
+                padding: 60px 20px;
+            }
+
+            .section-header {
+                margin-bottom: 40px;
             }
 
             .section-header h2 {
                 font-size: 2rem;
             }
 
+            .section-header p {
+                font-size: 1rem;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            .feature-card {
+                padding: 30px;
+            }
+
+            .feature-card h3 {
+                font-size: 1.4rem;
+            }
+
+            .feature-card p {
+                font-size: 0.95rem;
+            }
+
+            /* Stats Section */
+            .stats {
+                padding: 60px 20px;
+            }
+
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 20px;
+            }
+
+            .stat-item h3 {
+                font-size: 2rem;
+            }
+
+            .stat-item p {
+                font-size: 0.85rem;
+            }
+
+            /* Community Section */
+            section > div > div[style*="padding: 80px"] {
+                padding: 40px 20px !important;
+            }
+
+            section > div > div[style*="padding: 80px"] h2 {
+                font-size: 2rem !important;
+            }
+
+            section > div > div[style*="padding: 80px"] p {
+                font-size: 1rem !important;
+            }
+
+            section > div > div[style*="padding: 80px"] > div {
+                flex-direction: column !important;
+                gap: 20px !important;
+            }
+
+            section > div > div[style*="padding: 80px"] a {
+                padding: 16px 30px !important;
+                font-size: 1.1rem !important;
+            }
+
+            /* CTA Section */
+            .cta-section {
+                padding: 60px 20px;
+            }
+
+            .cta-content h2 {
+                font-size: 2rem;
+            }
+
+            .cta-content p {
+                font-size: 1rem;
+            }
+
+            .cta-content > div {
+                flex-direction: column !important;
+            }
+
+            .cta-content button,
+            .cta-content a {
+                width: 100% !important;
+                padding: 16px 30px !important;
+                font-size: 1rem !important;
+            }
+
+            /* Footer */
+            footer {
+                padding: 40px 20px 20px;
+            }
+
             .footer-content {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            .footer-brand h3 {
+                font-size: 1.5rem;
+            }
+
+            .footer-brand p {
+                font-size: 0.95rem;
+            }
+
+            .footer-brand > div a {
+                width: 100%;
+                justify-content: center;
+            }
+
+            /* Floating Telegram Button */
+            .telegram-float {
+                bottom: 20px;
+                right: 20px;
+            }
+
+            .telegram-float a {
+                padding: 12px 20px;
+                font-size: 0.9rem;
+            }
+
+            .telegram-float .telegram-icon {
+                font-size: 1.5rem;
+            }
+        }
+
+        /* Extra small screens */
+        @media (max-width: 480px) {
+            .hero-text h1 {
+                font-size: 1.75rem;
+            }
+
+            .hero-visual {
+                height: 350px;
+            }
+
+            .chart-container {
+                height: 300px;
+                padding: 15px;
+            }
+
+            .section-header h2 {
+                font-size: 1.75rem;
+            }
+
+            .stats-grid {
                 grid-template-columns: 1fr;
             }
 
@@ -553,8 +781,12 @@
                 font-size: 2.5rem;
             }
 
-            .stat-item p {
-                font-size: 0.95rem;
+            .floating-stats {
+                padding: 10px;
+            }
+
+            .stat-number {
+                font-size: 1.2rem;
             }
         }
 
@@ -672,7 +904,7 @@
             <!-- Logo e Navigation sulla stessa riga -->
             <div style="grid-column: 1 / -1; display: grid; grid-template-columns: 1fr 2fr 1fr; align-items: center; margin-bottom: 60px;">
                 <!-- Logo a sinistra -->
-                <img src="LOGO-removebg-previe.png" alt="THE TRADING PATH" style="height: 240px; width: auto; justify-self: start;">
+                <img src="https://i.imgur.com/JbmGxUD.png" alt="THE TRADING PATH" style="height: 240px; width: auto; justify-self: start;">
                 
                 <!-- Navigation Links al centro -->
                 <div style="display: flex; gap: 30px; align-items: center; justify-content: center; flex-wrap: wrap;">
