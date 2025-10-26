@@ -535,35 +535,45 @@
         @media (max-width: 768px) {
             /* Hero Section - Logo e Navigation */
             .hero-content > div:first-child {
-                grid-template-columns: 1fr !important;
+                display: grid !important;
+                grid-template-columns: 1fr 1fr !important;
+                grid-template-rows: auto auto !important;
                 gap: 15px !important;
                 margin-bottom: 30px !important;
-                display: flex !important;
-                flex-direction: column !important;
-            }
-
-            /* Container per logo e login button sulla stessa riga */
-            .hero-content > div:first-child::before {
-                content: '';
-                display: none;
+                position: relative !important;
             }
 
             .hero-content > div:first-child img {
-                height: 140px !important;
-                order: -2 !important;
-                align-self: flex-start !important;
-                position: absolute !important;
-                left: 20px !important;
-                top: 20px !important;
+                height: 100px !important;
+                grid-column: 1 !important;
+                grid-row: 1 !important;
+                justify-self: start !important;
+                align-self: start !important;
             }
 
+            /* Login/Registrati su mobile - in alto a destra */
+            .hero-content > div:first-child > div:nth-child(3) {
+                grid-column: 2 !important;
+                grid-row: 1 !important;
+                justify-self: end !important;
+                align-self: start !important;
+                margin-top: 0 !important;
+            }
+
+            .hero-content > div:first-child > div:nth-child(3) a {
+                padding: 8px 16px !important;
+                font-size: 0.8rem !important;
+            }
+
+            /* Navigation links - riga sotto */
             .hero-content > div:first-child > div:nth-child(2) {
+                grid-column: 1 / -1 !important;
+                grid-row: 2 !important;
+                display: flex !important;
                 flex-direction: row !important;
                 gap: 8px !important;
                 justify-content: center !important;
                 flex-wrap: wrap !important;
-                order: 2 !important;
-                margin-top: 160px !important;
             }
 
             .hero-content > div:first-child > div:nth-child(2) a {
@@ -575,20 +585,6 @@
             /* Nascondere "Inizia Ora" su mobile */
             .hero-content > div:first-child > div:nth-child(2) a[href="#cta"] {
                 display: none !important;
-            }
-
-            /* Login/Registrati su mobile */
-            .hero-content > div:first-child > div:nth-child(3) {
-                order: -1 !important;
-                position: absolute !important;
-                right: 20px !important;
-                top: 20px !important;
-                margin-top: 0 !important;
-            }
-
-            .hero-content > div:first-child > div:nth-child(3) a {
-                padding: 10px 20px !important;
-                font-size: 0.85rem !important;
             }
 
             /* Hero Text */
