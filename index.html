@@ -538,11 +538,23 @@
                 grid-template-columns: 1fr !important;
                 gap: 15px !important;
                 margin-bottom: 30px !important;
+                display: flex !important;
+                flex-direction: column !important;
+            }
+
+            /* Container per logo e login button sulla stessa riga */
+            .hero-content > div:first-child::before {
+                content: '';
+                display: none;
             }
 
             .hero-content > div:first-child img {
                 height: 140px !important;
-                justify-self: start !important;
+                order: -2 !important;
+                align-self: flex-start !important;
+                position: absolute !important;
+                left: 20px !important;
+                top: 20px !important;
             }
 
             .hero-content > div:first-child > div:nth-child(2) {
@@ -550,6 +562,8 @@
                 gap: 8px !important;
                 justify-content: center !important;
                 flex-wrap: wrap !important;
+                order: 2 !important;
+                margin-top: 160px !important;
             }
 
             .hero-content > div:first-child > div:nth-child(2) a {
@@ -565,13 +579,16 @@
 
             /* Login/Registrati su mobile */
             .hero-content > div:first-child > div:nth-child(3) {
-                justify-self: end !important;
-                margin-top: 10px !important;
+                order: -1 !important;
+                position: absolute !important;
+                right: 20px !important;
+                top: 20px !important;
+                margin-top: 0 !important;
             }
 
             .hero-content > div:first-child > div:nth-child(3) a {
                 padding: 10px 20px !important;
-                font-size: 0.9rem !important;
+                font-size: 0.85rem !important;
             }
 
             /* Hero Text */
