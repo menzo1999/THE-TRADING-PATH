@@ -1,0 +1,1086 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>THE TRADING PATH - Piattaforma di Trading Automatizzato</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: #0a0514;
+            color: #ffffff;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Effetti glow sullo sfondo */
+        .background-glow {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: -2;
+            overflow: hidden;
+        }
+
+        .glow-orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(120px);
+            opacity: 0.3;
+            animation: float-glow 15s ease-in-out infinite;
+        }
+
+        .glow-1 {
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, #6366f1, #4c1d95);
+            top: -10%;
+            left: -5%;
+            animation-delay: 0s;
+        }
+
+        .glow-2 {
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, #8b5cf6, #5b21b6);
+            top: 30%;
+            right: -10%;
+            animation-delay: 3s;
+        }
+
+        .glow-3 {
+            width: 550px;
+            height: 550px;
+            background: radial-gradient(circle, #3b82f6, #1e40af);
+            bottom: -5%;
+            left: 30%;
+            animation-delay: 6s;
+        }
+
+        .glow-4 {
+            width: 450px;
+            height: 450px;
+            background: radial-gradient(circle, #7c3aed, #4c1d95);
+            top: 60%;
+            left: -10%;
+            animation-delay: 9s;
+        }
+
+        .glow-5 {
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, #6366f1, #312e81);
+            bottom: 10%;
+            right: 10%;
+            animation-delay: 12s;
+        }
+
+        .glow-6 {
+            width: 480px;
+            height: 480px;
+            background: radial-gradient(circle, #10b981, #059669);
+            top: 40%;
+            right: 5%;
+            animation-delay: 8s;
+        }
+
+        @keyframes float-glow {
+            0%, 100% {
+                transform: translate(0, 0) scale(1);
+            }
+            33% {
+                transform: translate(50px, -50px) scale(1.1);
+            }
+            66% {
+                transform: translate(-30px, 30px) scale(0.9);
+            }
+        }
+
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            padding: 80px 40px;
+            background: transparent;
+        }
+
+        /* Navigation Links in Hero */
+        .hero-content a[href^="#"],
+        .hero-content a[href^="https://t.me"] {
+            position: relative;
+        }
+
+        .hero-content a[href^="#"]:hover,
+        .hero-content a[href^="https://t.me"]:hover {
+            color: #ffffff !important;
+            background: rgba(139, 92, 246, 0.1);
+            text-shadow: 0 0 20px rgba(167, 139, 250, 0.5);
+        }
+
+        .hero-content {
+            max-width: 1400px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+        }
+
+        .hero-text h1 {
+            font-size: 4rem;
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 30px;
+            background: linear-gradient(135deg, #ffffff, #ffffff, #ffffff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            filter: drop-shadow(0 0 30px rgba(139, 92, 246, 0.3));
+        }
+
+        .hero-text p {
+            font-size: 1.3rem;
+            color: #ffffff;
+            margin-bottom: 40px;
+            line-height: 1.6;
+            text-shadow: 0 0 20px rgba(139, 92, 246, 0.2);
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 20px;
+        }
+
+        .btn-primary {
+            padding: 18px 40px;
+            background: linear-gradient(135deg, #8b5cf6, #6366f1);
+            border: none;
+            border-radius: 30px;
+            color: white;
+            font-weight: 600;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 8px 40px rgba(139, 92, 246, 0.6);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 50px rgba(139, 92, 246, 0.8), 0 0 30px rgba(16, 185, 129, 0.2);
+        }
+
+        .btn-secondary {
+            padding: 18px 40px;
+            background: transparent;
+            border: 2px solid #8b5cf6;
+            border-radius: 30px;
+            color: #ffffff;
+            font-weight: 600;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .btn-secondary:hover {
+            background: rgba(139, 92, 246, 0.1);
+            transform: translateY(-3px);
+            box-shadow: 0 0 30px rgba(139, 92, 246, 0.4);
+        }
+
+        /* Chart Animation */
+        .hero-visual {
+            position: relative;
+            height: 550px;
+        }
+
+        .chart-container {
+            position: absolute;
+            width: 100%;
+            height: 450px;
+            background: rgba(76, 29, 149, 0.2);
+            border-radius: 20px;
+            padding: 40px;
+            border: 1px solid rgba(139, 92, 246, 0.3);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 0 60px rgba(139, 92, 246, 0.3);
+        }
+
+        .chart-lines {
+            width: 100%;
+            height: 100%;
+            position: relative;
+        }
+
+        .chart-line {
+            position: absolute;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, #8b5cf6, #6366f1, transparent);
+            animation: pulse 3s ease-in-out infinite;
+            box-shadow: 0 0 20px rgba(139, 92, 246, 0.8);
+        }
+
+        @keyframes pulse {
+            0%, 100% { 
+                opacity: 0.3;
+                box-shadow: 0 0 10px rgba(139, 92, 246, 0.5);
+            }
+            50% { 
+                opacity: 1;
+                box-shadow: 0 0 30px rgba(139, 92, 246, 1);
+            }
+        }
+
+        .floating-stats {
+            position: absolute;
+            background: rgba(139, 92, 246, 0.15);
+            border: 1px solid rgba(139, 92, 246, 0.4);
+            border-radius: 15px;
+            padding: 20px;
+            backdrop-filter: blur(10px);
+            animation: float 6s ease-in-out infinite;
+            box-shadow: 0 0 40px rgba(139, 92, 246, 0.4);
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .stat-1 {
+            top: 10%;
+            right: 10%;
+            animation-delay: 0s;
+        }
+
+        .stat-2 {
+            bottom: 25%;
+            left: 5%;
+            animation-delay: 2s;
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #ffffff, #ffffff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 5px;
+            filter: drop-shadow(0 0 10px rgba(139, 92, 246, 0.6));
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: #ffffff;
+        }
+
+        /* Features Section */
+        .features {
+            padding: 100px 40px;
+            background: transparent;
+            position: relative;
+        }
+
+        .section-header {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 80px;
+        }
+
+        .section-header h2 {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, #ffffff, #ffffff, #ffffff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            filter: drop-shadow(0 0 20px rgba(139, 92, 246, 0.3));
+        }
+
+        .section-header p {
+            font-size: 1.2rem;
+            color: #ffffff;
+        }
+
+        .features-grid {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+        }
+
+        .feature-card {
+            background: rgba(76, 29, 149, 0.2);
+            border: 1px solid rgba(139, 92, 246, 0.3);
+            border-radius: 20px;
+            padding: 50px;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 0 40px rgba(139, 92, 246, 0.2);
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, #8b5cf6, #6366f1, transparent);
+            transform: translateX(-100%);
+            transition: transform 0.6s;
+        }
+
+        .feature-card:hover::before {
+            transform: translateX(100%);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            border-color: #8b5cf6;
+            box-shadow: 0 20px 60px rgba(139, 92, 246, 0.5);
+            background: rgba(76, 29, 149, 0.3);
+        }
+
+        .feature-icon {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, #8b5cf6, #6366f1);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            margin-bottom: 25px;
+            box-shadow: 0 8px 30px rgba(139, 92, 246, 0.5);
+        }
+
+        .feature-card h3 {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+            color: #ffffff;
+        }
+
+        .feature-card p {
+            color: #ffffff;
+            line-height: 1.7;
+            font-size: 1.05rem;
+        }
+
+        /* Stats Section */
+        .stats {
+            padding: 100px 40px;
+            background: transparent;
+            position: relative;
+        }
+
+        .stats-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            text-align: center;
+        }
+
+        .stat-item {
+            padding: 30px 20px;
+        }
+
+        .stat-item h3 {
+            font-size: 3rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #ffffff, #ffffff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 10px;
+            filter: drop-shadow(0 0 20px rgba(139, 92, 246, 0.6));
+            line-height: 1.1;
+        }
+
+        .stat-item p {
+            font-size: 1rem;
+            color: #ffffff;
+            font-weight: 500;
+            line-height: 1.3;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            padding: 120px 40px;
+            background: transparent;
+            text-align: center;
+            position: relative;
+        }
+
+        .cta-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .cta-content h2 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 30px;
+            background: linear-gradient(135deg, #ffffff, #ffffff, #ffffff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            filter: drop-shadow(0 0 30px rgba(139, 92, 246, 0.4));
+        }
+
+        .cta-content p {
+            font-size: 1.3rem;
+            color: #ffffff;
+            margin-bottom: 50px;
+        }
+
+        /* Footer */
+        footer {
+            background: rgba(10, 5, 20, 0.8);
+            padding: 60px 40px 30px;
+            border-top: 1px solid rgba(139, 92, 246, 0.2);
+            backdrop-filter: blur(10px);
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 60px;
+            margin-bottom: 40px;
+        }
+
+        .footer-brand h3 {
+            font-size: 1.8rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #ffffff, #ffffff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 20px;
+        }
+
+        .footer-brand p {
+            color: #ffffff;
+            line-height: 1.6;
+        }
+
+        .footer-links h4 {
+            color: #ffffff;
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+
+        .footer-links a {
+            color: #ffffff;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: #ffffff;
+            text-shadow: 0 0 10px rgba(139, 92, 246, 0.5);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(139, 92, 246, 0.2);
+            color: #ffffff;
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .hero-text h1 {
+                font-size: 3rem;
+            }
+
+            .hero-buttons {
+                justify-content: center;
+            }
+
+            .hero-visual {
+                margin-top: 60px;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero-text h1 {
+                font-size: 2.5rem;
+            }
+
+            .section-header h2 {
+                font-size: 2rem;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+
+            .stat-item h3 {
+                font-size: 2.5rem;
+            }
+
+            .stat-item p {
+                font-size: 0.95rem;
+            }
+        }
+
+        /* Background particles */
+        .particles-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+        }
+
+        .particle-bg {
+            position: absolute;
+            background: #8b5cf6;
+            border-radius: 50%;
+            filter: blur(2px);
+            animation: float-particle 20s infinite;
+            box-shadow: 0 0 20px rgba(139, 92, 246, 0.8);
+        }
+
+        @keyframes float-particle {
+            0%, 100% {
+                transform: translate(0, 0);
+                opacity: 0.3;
+            }
+            50% {
+                transform: translate(100px, -100px);
+                opacity: 0.6;
+            }
+        }
+
+        /* Floating Telegram Button */
+        .telegram-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 999;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .telegram-float a {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 15px 25px;
+            background: linear-gradient(135deg, #8b5cf6, #6366f1);
+            border-radius: 50px;
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            box-shadow: 0 8px 30px rgba(139, 92, 246, 0.6);
+            transition: all 0.3s;
+        }
+
+        .telegram-float a:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 40px rgba(139, 92, 246, 0.8);
+        }
+
+        .telegram-float .telegram-icon {
+            font-size: 1.8rem;
+            animation: pulse-icon 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse-icon {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.1);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .telegram-float {
+                bottom: 20px;
+                right: 20px;
+            }
+            
+            .telegram-float a {
+                padding: 12px 20px;
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Background Glow Effects -->
+    <div class="background-glow">
+        <div class="glow-orb glow-1"></div>
+        <div class="glow-orb glow-2"></div>
+        <div class="glow-orb glow-3"></div>
+        <div class="glow-orb glow-4"></div>
+        <div class="glow-orb glow-5"></div>
+        <div class="glow-orb glow-6"></div>
+    </div>
+
+    <!-- Background Particles -->
+    <div class="particles-bg" id="particles-bg"></div>
+
+    <!-- Floating Telegram Button -->
+    <div class="telegram-float">
+        <a href="https://t.me/THETRADINGPATH_TL" target="_blank" rel="noopener">
+            <span class="telegram-icon">📱</span>
+            <span>Canale Telegram</span>
+        </a>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <!-- Logo e Navigation sulla stessa riga -->
+            <div style="grid-column: 1 / -1; display: grid; grid-template-columns: 1fr 2fr 1fr; align-items: center; margin-bottom: 60px;">
+                <!-- Logo a sinistra -->
+                <img src="LOGO-removebg-previe.png" alt="THE TRADING PATH" style="height: 240px; width: auto; justify-self: start;">
+                
+                <!-- Navigation Links al centro -->
+                <div style="display: flex; gap: 30px; align-items: center; justify-content: center; flex-wrap: wrap;">
+                    <a href="#features" style="color: #ffffff; text-decoration: none; font-weight: 600; transition: all 0.3s; padding: 10px 20px; border-radius: 20px;">Funzionalità</a>
+                    <a href="#stats" style="color: #ffffff; text-decoration: none; font-weight: 600; transition: all 0.3s; padding: 10px 20px; border-radius: 20px;">Performance</a>
+                    <a href="https://t.me/THETRADINGPATH_TL" target="_blank" style="color: #ffffff; text-decoration: none; font-weight: 600; transition: all 0.3s; padding: 10px 20px; border-radius: 20px; display: flex; align-items: center; gap: 8px;">
+                        <span style="font-size: 1.1rem;">📱</span> Telegram
+                    </a>
+                    <a href="#cta" style="color: #ffffff; text-decoration: none; font-weight: 600; transition: all 0.3s; padding: 10px 20px; border-radius: 20px;">Inizia Ora</a>
+                </div>
+                
+                <!-- Spazio vuoto a destra per bilanciare -->
+                <div></div>
+            </div>
+            <div class="hero-text">
+                <h1>Fai Trading in Modo Intelligente con l'Automazione AI</h1>
+                <p>Unisciti a migliaia di trader che si fidano di THE TRADING PATH per soluzioni di trading automatizzate e intelligenti. Lascia che i nostri algoritmi avanzati lavorino 24/7 mentre tu ti concentri su ciò che conta.</p>
+                <div class="hero-buttons">
+                    <button class="btn-primary">Inizia a Fare Trading</button>
+                    <button class="btn-secondary" onclick="window.open('https://t.me/THETRADINGPATH_TL', '_blank')">
+                        <span style="font-size: 1.2rem; margin-right: 8px;">📱</span> Unisciti al Canale Telegram
+                    </button>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <div class="chart-container">
+                    <div class="chart-lines">
+                        <div class="chart-line" style="top: 20%; width: 80%; left: 10%;"></div>
+                        <div class="chart-line" style="top: 50%; width: 60%; left: 20%; animation-delay: 1s;"></div>
+                        <div class="chart-line" style="top: 70%; width: 70%; left: 15%; animation-delay: 2s;"></div>
+                    </div>
+                </div>
+                <!-- Badge aggiornamento - spostato sotto il grafico -->
+                <div style="margin-top: 20px; text-align: center;">
+                    <div style="display: inline-flex; align-items: center; gap: 8px; background: rgba(139, 92, 246, 0.2); border: 1px solid rgba(139, 92, 246, 0.4); border-radius: 10px; padding: 10px 20px; font-size: 0.9rem; backdrop-filter: blur(10px); box-shadow: 0 0 20px rgba(16, 185, 129, 0.15);">
+                        <span style="color: #4ade80; font-size: 1.1rem; filter: drop-shadow(0 0 8px rgba(74, 222, 128, 0.6));">●</span> 
+                        <span style="color: #ffffff; font-weight: 500;" id="last-update-text">Dati in tempo reale</span>
+                    </div>
+                </div>
+                <div class="floating-stats stat-1">
+                    <div class="stat-number" id="roi-display">+84.26%</div>
+                    <div class="stat-label">ROI Totale</div>
+                </div>
+                <div class="floating-stats stat-2">
+                    <div class="stat-number" id="winrate-display">70%</div>
+                    <div class="stat-label">Tasso di Vincita</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Trading Phones Section -->
+    <section style="padding: 100px 40px; background: transparent; position: relative;">
+        <div style="max-width: 1200px; margin: 0 auto; text-align: center;">
+            <h2 style="font-size: 3.5rem; font-weight: 800; margin-bottom: 50px; background: linear-gradient(135deg, #ffffff, #ffffff, #ffffff); -webkit-background-clip: text; -webkit-text-fill-color: transparent; filter: drop-shadow(0 0 30px rgba(139, 92, 246, 0.3)); line-height: 1.2;">
+                Fai trading senza stress<br>ma come un'esperto
+            </h2>
+            <div style="display: flex; justify-content: center; align-items: center; padding: 20px;">
+                <img src="https://i.imgur.com/VJKKYPD.png" alt="Trading App su iPhone" style="max-width: 90%; height: auto; max-height: 600px; filter: drop-shadow(0 20px 60px rgba(139, 92, 246, 0.4)); animation: float 6s ease-in-out infinite;">
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features" id="features">
+        <div class="section-header">
+            <h2>Perché Scegliere THE TRADING PATH</h2>
+            <p>Funzionalità avanzate progettate per darti il vantaggio competitivo nel trading automatizzato</p>
+        </div>
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">🤖</div>
+                <h3>Trading Basato su AI</h3>
+                <p>I nostri algoritmi avanzati analizzano i pattern di mercato in tempo reale, prendendo decisioni di trading intelligenti basate su strategie comprovate e machine learning.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">⚡</div>
+                <h3>Esecuzione Fulminea</h3>
+                <p>Esegui operazioni in millisecondi con la nostra infrastruttura ottimizzata. Non perdere mai un'opportunità con le nostre capacità di trading ad alta frequenza.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🛡️</div>
+                <h3>Gestione del Rischio</h3>
+                <p>Controlli di rischio integrati e meccanismi di stop-loss proteggono il tuo capitale. Personalizza i parametri di rischio per adattarli al tuo stile di trading.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">📊</div>
+                <h3>Analisi in Tempo Reale</h3>
+                <p>Monitora le tue prestazioni con dashboard completi e report dettagliati. Prendi decisioni basate sui dati con approfondimenti azionabili.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🔄</div>
+                <h3>Automazione 24/7</h3>
+                <p>Il tuo bot lavora senza sosta, senza dormire, senza emozioni. Cattura opportunità nei mercati globali in qualsiasi momento.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🎯</div>
+                <h3>Completamente Automatico</h3>
+                <p>Zero stress, zero gestione manuale. Il sistema lavora per te in modo completamente automatico. Tu non devi occuparti di nulla: nessuna configurazione, nessuna ottimizzazione, nessun intervento. Accendi e lascia lavorare.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats" id="stats">
+        <div class="section-header">
+            <h2>Performance Comprovate</h2>
+            <p>Risultati reali verificati da MyFXBook</p>
+            <a href="https://www.myfxbook.com/portfolio/trading-path/11678173" target="_blank" rel="noopener" style="display: inline-block; margin-top: 20px; color: #ffffff; text-decoration: none; font-weight: 600; transition: all 0.3s;">
+                📊 Visualizza Portfolio Completo su MyFXBook →
+            </a>
+        </div>
+        <div class="stats-grid">
+            <div class="stat-item">
+                <h3 id="trades-count">231</h3>
+                <p>Operazioni Totali</p>
+            </div>
+            <div class="stat-item">
+                <h3 id="roi-stat">+84.26%</h3>
+                <p>ROI Totale</p>
+            </div>
+            <div class="stat-item">
+                <h3 id="winrate-stat">70%</h3>
+                <p>Tasso di Vincita</p>
+            </div>
+            <div class="stat-item">
+                <h3 id="drawdown-stat">21.90%</h3>
+                <p>Drawdown Max</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Community Section -->
+    <section style="padding: 100px 40px; background: transparent; position: relative;">
+        <div style="max-width: 1200px; margin: 0 auto; text-align: center;">
+            <div style="background: rgba(76, 29, 149, 0.2); border: 1px solid rgba(139, 92, 246, 0.3); border-radius: 30px; padding: 80px 40px; backdrop-filter: blur(10px); box-shadow: 0 0 60px rgba(139, 92, 246, 0.3);">
+                <div style="font-size: 4rem; margin-bottom: 30px; filter: drop-shadow(0 0 20px rgba(139, 92, 246, 0.6));">📱</div>
+                <h2 style="font-size: 3rem; font-weight: 800; margin-bottom: 25px; background: linear-gradient(135deg, #ffffff, #ffffff, #ffffff); -webkit-background-clip: text; -webkit-text-fill-color: transparent; filter: drop-shadow(0 0 20px rgba(139, 92, 246, 0.3));">
+                    Unisciti alla Nostra Community
+                </h2>
+                <p style="font-size: 1.3rem; color: #ffffff; margin-bottom: 40px; max-width: 700px; margin-left: auto; margin-right: auto; line-height: 1.6;">
+                    Entra nel canale Telegram ufficiale di THE TRADING PATH. Ricevi aggiornamenti in tempo reale, analisi di mercato, segnali di trading e supporto dalla nostra community di trader esperti.
+                </p>
+                <div style="display: flex; gap: 30px; justify-content: center; align-items: center; flex-wrap: wrap; margin-bottom: 30px;">
+                    <div style="text-align: center;">
+                        <div style="font-size: 2.5rem; font-weight: 800; background: linear-gradient(135deg, #ffffff, #ffffff); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 5px;">1000+</div>
+                        <div style="color: #ffffff;">Membri Attivi</div>
+                    </div>
+                    <div style="text-align: center;">
+                        <div style="font-size: 2.5rem; font-weight: 800; background: linear-gradient(135deg, #ffffff, #ffffff); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 5px;">24/7</div>
+                        <div style="color: #ffffff;">Supporto</div>
+                    </div>
+                    <div style="text-align: center;">
+                        <div style="font-size: 2.5rem; font-weight: 800; background: linear-gradient(135deg, #ffffff, #ffffff); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 5px;">Gratis</div>
+                        <div style="color: #ffffff;">Sempre</div>
+                    </div>
+                </div>
+                <a href="https://t.me/THETRADINGPATH_TL" target="_blank" rel="noopener" style="display: inline-flex; align-items: center; gap: 15px; padding: 20px 50px; background: linear-gradient(135deg, #8b5cf6, #6366f1); border-radius: 50px; color: white; text-decoration: none; font-weight: 700; font-size: 1.3rem; box-shadow: 0 8px 40px rgba(139, 92, 246, 0.6); transition: all 0.3s;">
+                    <span style="font-size: 2rem;">📱</span>
+                    <span>Unisciti al Canale Telegram</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="cta-content">
+            <h2>Inizia il Tuo Percorso di Trading Oggi</h2>
+            <p>Unisciti a migliaia di trader di successo e sblocca il tuo potenziale di trading con la nostra piattaforma di automazione basata su AI.</p>
+            <div style="display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; margin-top: 40px;">
+                <button class="btn-primary" style="font-size: 1.2rem; padding: 20px 50px;">Inizia Gratis</button>
+                <a href="https://t.me/THETRADINGPATH_TL" target="_blank" rel="noopener" style="display: inline-flex; align-items: center; gap: 10px; padding: 20px 50px; background: transparent; border: 2px solid #8b5cf6; border-radius: 30px; color: #ffffff; font-weight: 600; font-size: 1.2rem; text-decoration: none; transition: all 0.3s;">
+                    <span style="font-size: 1.5rem;">📱</span> Canale Telegram
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-brand">
+                <h3>THE TRADING PATH</h3>
+                <p>Potenziamo trader in tutto il mondo con tecnologia AI all'avanguardia e soluzioni di trading automatizzato. Fai trading in modo più intelligente, non più faticoso.</p>
+                <div style="margin-top: 20px;">
+                    <a href="https://t.me/THETRADINGPATH_TL" target="_blank" rel="noopener" style="display: inline-flex; align-items: center; gap: 10px; padding: 12px 25px; background: linear-gradient(135deg, #8b5cf6, #6366f1); border-radius: 25px; color: white; text-decoration: none; font-weight: 600; transition: all 0.3s; box-shadow: 0 4px 20px rgba(139, 92, 246, 0.4);">
+                        <span style="font-size: 1.3rem;">📱</span> Unisciti al Canale Telegram
+                    </a>
+                </div>
+            </div>
+            <div class="footer-links">
+                <h4>Prodotto</h4>
+                <ul>
+                    <li><a href="#">Funzionalità</a></li>
+                    <li><a href="#">Prezzi</a></li>
+                    <li><a href="#">Strategie</a></li>
+                    <li><a href="#">API</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h4>Azienda</h4>
+                <ul>
+                    <li><a href="#">Chi Siamo</a></li>
+                    <li><a href="#">Carriere</a></li>
+                    <li><a href="#">Blog</a></li>
+                    <li><a href="#">Contatti</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h4>Community</h4>
+                <ul>
+                    <li><a href="https://t.me/THETRADINGPATH_TL" target="_blank">Canale Telegram</a></li>
+                    <li><a href="https://www.myfxbook.com/portfolio/trading-path/11678173" target="_blank">MyFXBook</a></li>
+                    <li><a href="#">Discord</a></li>
+                    <li><a href="#">Forum</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 THE TRADING PATH. Tutti i diritti riservati. Il trading comporta rischi. Le performance passate non garantiscono risultati futuri.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Create background particles
+        const particlesBg = document.getElementById('particles-bg');
+        for (let i = 0; i < 25; i++) {
+            const particle = document.createElement('div');
+            particle.className = 'particle-bg';
+            particle.style.width = Math.random() * 5 + 2 + 'px';
+            particle.style.height = particle.style.width;
+            particle.style.left = Math.random() * 100 + '%';
+            particle.style.top = Math.random() * 100 + '%';
+            particle.style.animationDelay = Math.random() * 20 + 's';
+            particle.style.animationDuration = (Math.random() * 20 + 15) + 's';
+            particlesBg.appendChild(particle);
+        }
+
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+
+        //         // ===== AUTO-UPDATE MYFXBOOK DATA =====
+        // 
+        // NOTA: L'aggiornamento automatico è stato disabilitato.
+        // Per aggiornare i dati, invia il link MyFXBook a Claude che aggiornerà manualmente i valori.
+        // Ultimo aggiornamento: 24 Ottobre 2025 - ROI: +84.26%, Trades: 231, Win Rate: 70%, Drawdown: 21.90%
+        //         
+        //         // MyFXBook Portfolio URL
+        //         const MYFXBOOK_PORTFOLIO_ID = '11678173';
+        //         const UPDATE_INTERVAL = 30 * 60 * 1000; // Aggiorna ogni 30 minuti
+        // 
+        //         // Funzione per aggiornare i dati dal backend
+        //         async function updateMyFXBookData() {
+        //             try {
+        //                 console.log('🔄 Aggiornamento dati MyFXBook...');
+        //                 
+        //                 /* 
+        //                  * NOTA IMPORTANTE: 
+        //                  * Per fare funzionare l'aggiornamento automatico, hai bisogno di un backend
+        //                  * che recuperi i dati da MyFXBook e li serva alla tua app frontend.
+        //                  * 
+        //                  * Ecco come implementarlo:
+        //                  * 
+        //                  * OPZIONE 1 - Backend PHP/Node.js/Python:
+        //                  * Crea un endpoint API (es: /api/myfxbook-stats) che:
+        //                  * 1. Fa una richiesta a MyFXBook
+        //                  * 2. Estrae ROI, Win Rate, Trades, Drawdown
+        //                  * 3. Restituisce i dati in formato JSON
+        //                  * 
+        //                  * OPZIONE 2 - MyFXBook API (se disponibile):
+        //                  * Usa l'API ufficiale di MyFXBook se hai accesso
+        //                  * 
+        //                  * OPZIONE 3 - Serverless Function (Vercel/Netlify):
+        //                  * Crea una serverless function che fa lo scraping
+        //                  */
+        // 
+        //                 // Sostituisci questo URL con il tuo endpoint backend
+        //                 const response = await fetch('/api/myfxbook-stats?portfolio=' + MYFXBOOK_PORTFOLIO_ID);
+        //                 
+        //                 if (!response.ok) {
+        //                     throw new Error('Errore nel recupero dati');
+        //                 }
+        //                 
+        //                 const data = await response.json();
+        //                 
+        //                 // Aggiorna i valori nella pagina
+        //                 updateDisplayValues(data);
+        //                 
+        //                 console.log('✅ Dati aggiornati con successo:', data);
+        //                 
+        //             } catch (error) {
+        //                 console.warn('⚠️ Impossibile aggiornare i dati MyFXBook:', error.message);
+        //                 console.log('📊 Utilizzo dati statici fino al prossimo tentativo');
+        //                 // I dati statici attuali rimangono visualizzati
+        //             }
+        //         }
+        // 
+        //         // Funzione per aggiornare i valori visualizzati
+        //         function updateDisplayValues(data) {
+        //             // Aggiorna ROI
+        //             if (data.roi) {
+        //                 document.getElementById('roi-display').textContent = data.roi;
+        //                 document.getElementById('roi-stat').textContent = data.roi;
+        //             }
+        //             
+        //             // Aggiorna Win Rate
+        //             if (data.winRate) {
+        //                 document.getElementById('winrate-display').textContent = data.winRate;
+        //                 document.getElementById('winrate-stat').textContent = data.winRate;
+        //             }
+        //             
+        //             // Aggiorna Trades
+        //             if (data.trades) {
+        //                 document.getElementById('trades-count').textContent = data.trades;
+        //             }
+        //             
+        //             // Aggiorna Drawdown
+        //             if (data.drawdown) {
+        //                 document.getElementById('drawdown-stat').textContent = data.drawdown;
+        //             }
+        // 
+        //             // Aggiorna badge ultimo aggiornamento
+        //             const now = new Date();
+        //             const timeString = now.toLocaleTimeString('it-IT', { hour: '2-digit', minute: '2-digit' });
+        //             document.getElementById('last-update-text').textContent = `Aggiornato alle ${timeString}`;
+        // 
+        //             // Animazione di aggiornamento
+        //             const elements = [
+        //                 document.getElementById('roi-display'),
+        //                 document.getElementById('winrate-display'),
+        //                 document.getElementById('roi-stat'),
+        //                 document.getElementById('winrate-stat'),
+        //                 document.getElementById('trades-count'),
+        //                 document.getElementById('drawdown-stat')
+        //             ];
+        // 
+        //             elements.forEach(el => {
+        //                 if (el) {
+        //                     el.style.animation = 'none';
+        //                     setTimeout(() => {
+        //                         el.style.animation = 'pulse 0.5s ease-in-out';
+        //                     }, 10);
+        //                 }
+        //             });
+        //         }
+        // 
+        //         // Avvia l'aggiornamento periodico
+        //         // Primo aggiornamento dopo 5 secondi
+        //         setTimeout(updateMyFXBookData, 5000);
+        //         
+        //         // Aggiornamenti successivi ogni 30 minuti
+        //         setInterval(updateMyFXBookData, UPDATE_INTERVAL);
+        // 
+        //         // Mostra un indicatore quando i dati sono stati aggiornati
+        //         let lastUpdateTime = new Date();
+        //         function showLastUpdate() {
+        //             const now = new Date();
+        //             const diffMinutes = Math.floor((now - lastUpdateTime) / 60000);
+        //             if (diffMinutes > 0) {
+        //                 console.log(`📅 Ultimo aggiornamento: ${diffMinutes} minuti fa`);
+        //             }
+        //         }
+        //         
+        //         // Mostra l'ultimo aggiornamento ogni minuto
+        //         setInterval(showLastUpdate, 60000);
+
+        /* 
+         * ========================================
+         * ESEMPIO DI BACKEND ENDPOINT (Node.js/Express):
+         * ========================================
+         * 
+         * const express = require('express');
+         * const axios = require('axios');
+         * const cheerio = require('cheerio');
+         * 
+         * app.get('/api/myfxbook-stats', async (req, res) => {
+         *     try {
+         *         const portfolioId = req.query.portfolio;
+         *         const url = `https://www.myfxbook.com/members/Menzo99/trading-path/${portfolioId}`;
+         *         
+         *         const { data } = await axios.get(url);
+         *         const $ = cheerio.load(data);
+         *         
+         *         // Estrai i dati (dovrai adattare i selettori)
+         *         const stats = {
+         *             roi: '+64.31%',      // Estrai dal HTML
+         *             winRate: '70%',      // Estrai dal HTML
+         *             trades: '207',       // Estrai dal HTML
+         *             drawdown: '21.90%'   // Estrai dal HTML
+         *         };
+         *         
+         *         res.json(stats);
+         *     } catch (error) {
+         *         res.status(500).json({ error: 'Errore nel recupero dati' });
+         *     }
+         * });
+         * 
+         * ========================================
+         */
+    </script>
+</body>
+</html>
